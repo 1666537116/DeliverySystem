@@ -8,50 +8,11 @@
 <meta name="author" content="DeathGhost"/>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/public.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jqpublic.js"></script>
 <script type="text/javascript" src="js/cart.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script>
-$(function(){		
-	$('.title-list li').click(function(){
-		var liindex = $('.title-list li').index(this);
-		$(this).addClass('on').siblings().removeClass('on');
-		$('.menutab-wrap div.menutab').eq(liindex).fadeIn(150).siblings('div.menutab').hide();
-		var liWidth = $('.title-list li').width();
-		$('.shopcontent .title-list p').stop(false,true).animate({'left' : liindex * liWidth + 'px'},300);
-	});
-	
-	$('.menutab-wrap .menutab li').hover(function(){
-		$(this).css("border-color","#ff6600");
-		$(this).find('p > a').css('color','#ff6600');
-	},function(){
-		$(this).css("border-color","#fafafa");
-		$(this).find('p > a').css('color','#666666');
-	});
-	});
-	var mt = 0;
-window.onload = function () {
- var Topcart = document.getElementById("Topcart");
-   var mt = Topcart.offsetTop;
-    window.onscroll = function () {
-     var t = document.documentElement.scrollTop || document.body.scrollTop;
-      if (t > mt) {
-      Topcart.style.position = "fixed";
-        Topcart.style.margin = "";
-         Topcart.style.top = "200px";
-		 Topcart.style.right = "191px";
-		 Topcart.style.boxShadow ="0px 0px 20px 5px #cccccc";
-		 Topcart.style.top="0";
-		 Topcart.style.border="1px #636363 solid";
-         }
-         else { 
-         Topcart.style.position = "static";
-		 Topcart.style.boxShadow ="none";
-		 Topcart.style.border="";
-          }
-          }
-        }
+
 </script>
 <!--
 Author: DeathGhost
@@ -103,9 +64,9 @@ Author URI: http://www.deathghost.cn
 <section class="Shop-index">
  <article>
   <div class="shopinfor">
-   <div class="title">
+   <div class="title" id="title">
     <img src="upload/wpjnewlogo.jpg" class="shop-ico">
-    <span>含山路外婆家</span>
+
     <span>
      <img src="images/star-on.png">
      <img src="images/star-on.png">
@@ -117,20 +78,16 @@ Author URI: http://www.deathghost.cn
    </div>
    <div class="imginfor">
     <div class="shopimg">
-     <img src="upload/cc.jpg" id="showimg">
-      <ul class="smallpic">
-       <li><img src="upload/cc.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
-      </ul>
+     <div id="img1">
+
+     </div>
+     <!-- <ul class="smallpic" id="img">
+      </ul>-->
     </div>
     <div class="shoptext">
-     <p><span>地址：</span>陕西省西安市雁塔区丈八北路***号</p>
-     <p><span>电话：</span>029-88888888</p>
-     <p><span>特色菜品：</span>毛肚、牛丸、滑虾、羊肉、香辣虾...</p>
-     <p><span>优惠活动：</span>暂无信息</p>
-     <p><span>停车位：</span>4个停车位（免费）</p>
-     <p><span>营业时间：</span>09:00~22:00</p>
-     <p><span>WIFI：</span>免费WIFI</p>
-     <p><span>价格：</span>50元</p>
+     <div id="merchants">
+
+     </div>
      <div class="Button">
       <a href="#ydwm"><span class="DCbutton">查看菜谱点菜</span></a>
      </div>
@@ -156,59 +113,26 @@ Author URI: http://www.deathghost.cn
     <!--case1-->
     <div class="menutab show">
      <ul class="products">
-		<li>
-		 <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-         <img src="upload/01.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-         <img src="upload/02.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-         <img src="upload/04.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="detailsp.html" target="_blank" title="酸辣土豆丝">
-         <img src="upload/03.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
+
+      <div id="data">
+
+  </div>
        <div class="TurnPage">
-     <a href="#">
+    <!-- <a href="javascript:loadData(1,3);">
       <span class="Prev"><i></i>首页</span>
-     </a>
-     <a href="#"><span class="PNumber">1</span></a>
-     <a href="#"><span class="PNumber">2</span></a>
-     <a href="#">
+     </a>-->
+
+       <a id="pagenumber">
+
+
+
+       </a>
+
+
+
+    <!-- <a href="#">
      <span class="Next">最后一页<i></i></span>
-     </a>
+     </a>-->
     </div>
 	 </ul>
     </div>
@@ -258,8 +182,8 @@ Author URI: http://www.deathghost.cn
      <span class="Next">最后一页<i></i></span>
      </a>
     </div>
-    
-     <form class="A-Message" action="#"> 
+
+     <form class="A-Message" action="#">
       <p><i>姓名：</i><input name="usr_name" type="text" autofocus placeholder="张三" required></p>
       <p><i>手机：</i><input name="" type="text" placeholder="15825518***" pattern="[0-9]{11}" required></p>
       <p><i>邮件：</i><input type="email" name="email" autocomplete="off" placeholder="admin@admin.com" required/></p>
@@ -313,7 +237,7 @@ Author URI: http://www.deathghost.cn
    </ul>
   </div>
  </aside>
- 
+
 </section>
 <!--End content-->
 <div class="F-link">
@@ -371,6 +295,162 @@ Author URI: http://www.deathghost.cn
  </section>
 <div class="copyright">© 版权所有 2016 DeathGhost 技术支持：<a href="http://www.deathghost.cn" title="DeathGhost">DeathGhost</a></div>
 </footer>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/layer/2.4/layer.js"></script>
+<script type="text/javascript">
+  $(function () {
+   fy();
+   loadData(1,3);
+  })
 
+ /*$(function(){
+  loadData(1,3);
+  //alert("aaa")
+  /!*$('.title-list li').click(function(){
+   var liindex = $('.title-list li').index(this);
+   $(this).addClass('on').siblings().removeClass('on');
+   $('.menutab-wrap div.menutab').eq(liindex).fadeIn(150).siblings('div.menutab').hide();
+   var liWidth = $('.title-list li').width();
+   $('.shopcontent .title-list p').stop(false,true).animate({'left' : liindex * liWidth + 'px'},300);
+  });
+
+  $('.menutab-wrap .menutab li').hover(function(){
+   $(this).css("border-color","#ff6600");
+   $(this).find('p > a').css('color','#ff6600');
+  },function(){
+   $(this).css("border-color","#fafafa");
+   $(this).find('p > a').css('color','#666666');
+  });
+ });
+ var mt = 0;
+ window.onload = function () {
+  var Topcart = document.getElementById("Topcart");
+  var mt = Topcart.offsetTop;
+  window.onscroll = function () {
+   var t = document.documentElement.scrollTop || document.body.scrollTop;
+   if (t > mt) {
+    Topcart.style.position = "fixed";
+    Topcart.style.margin = "";
+    Topcart.style.top = "200px";
+    Topcart.style.right = "191px";
+    Topcart.style.boxShadow ="0px 0px 20px 5px #cccccc";
+    Topcart.style.top="0";
+    Topcart.style.border="1px #636363 solid";
+   }
+   else {
+    Topcart.style.position = "static";
+    Topcart.style.boxShadow ="none";
+    Topcart.style.border="";
+   }
+  }*!/
+ }*/
+ //加载页面数据
+ function loadData(currentPage,pageSize) {
+
+  let url = window.location.href;
+  let merchantsId =  url.charAt(url.length-1);
+  //alert(merchantsId)
+  $.ajax({
+   url:'LoadServlet',
+   dataType:'json',
+   data:{method:'menu',currentPage:currentPage,pageSize:pageSize,merchantsId:merchantsId},
+   success:function (page) {
+    if(page!=null){
+     $("#data").empty();
+     $("#pagenumber").empty();
+     //$("#merchants").empty();
+
+   // let merchants = page.merchants;
+     /*let  merchantsData = `
+<p><span>店铺：</span>${page.merchants.merchantsName}</p>
+<p><span>地址：</span>${page.merchants.merchantsAddres}</p>
+     <p><span>电话：</span>${page.merchants.merchantsPhone}</p>
+     <p><span>营业时间：</span>${page.merchants.businessTime}</p>
+
+     `*/
+    // $("#merchants").append(merchantsData);
+
+
+     let pagenumber =`<a href="javascript:loadData(1,3);">
+      <span class="Prev"><i></i>首页</span>
+     </a>`;
+    // layer.msg('开始加载数据!',{icon:1,time:1000});
+     //alert(merchantsId);
+     let  data = ``;
+     		     $.each( page.data, function(i,Menu) {
+                   pagenumber+=`
+                   <a href="javascript:loadData(${i+1},3);"><span class="PNumber">${i+1}</span></a>
+
+                  `
+
+    // page.data.forEach(Menu=>{
+
+      data+=`
+
+<li>
+ <a href="detailsp.html?id=${Menu.meId}" target="_blank" title="${Menu.menuName}">
+         <img src="LoadImgServlet?pictureurl=${Menu.pictureurl}" class="foodsimgsize">
+         </a>
+          <a href="#" class="item">
+ <div>
+  <p>${Menu.menuName}</p>
+<p class="AButton">拖至购物车:${Menu.menuPrice}</p>
+</div>
+</a>
+</li>
+
+        `;
+     })
+     $("#data").append(data);
+
+     pagenumber+=` <a href="javascript:loadData(${page.totalPage},3);">
+     <span class="Next">最后一页<i></i></span>
+     </a>`;
+     $("#pagenumber").append(pagenumber);
+    }
+   }
+  })
+ }
+
+ function fy() {
+  let url = window.location.href;
+  let merchantsId =  url.charAt(url.length-1);
+  //alert(merchantsId)
+  $.ajax({
+   url:'MerchantsServlet',
+   dataType:'json',
+   data:{merchantsId:merchantsId},
+   success:function (merchants) {
+    $("#img1").empty();
+    $("#img").empty();
+    if(merchants!=null){
+
+     let  merchantsData = `
+<p><span>店铺：</span>${merchants.merchantsName}</p>
+<p><span>地址：</span>${merchants.merchantsAddres}</p>
+     <p><span>电话：</span>${merchants.merchantsPhone}</p>
+     <p><span>营业时间：</span>${merchants.businessTime}</p>
+
+     `
+     $("#merchants").append(merchantsData);
+ let img1 = `<img src="LoadImgServlet?pictureurl=${merchants.merchantsImg}" id="showimg">`;
+   let img =`
+          <li><img src="LoadImgServlet?pictureurl=${merchants.merchantsImg}" onmouseover="show(this)" onmouseout="hide()"></li>
+
+   `;
+   let title= `  <span id="name">${merchants.merchantsName}</span>`
+     $("#img").append(img);
+     $("#img1").append(img1);
+     $("#title").append(title);
+    //
+
+
+
+
+    }
+   }
+  })
+ }
+</script>
 </body>
 </html>

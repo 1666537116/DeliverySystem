@@ -4,7 +4,7 @@
 <mapper namespace="com.newer.logreg.mapper.UserMapper">
     <insert id="addUser" parameterType="com.newer.logreg.domian.User">
     <!--获取插入数据后，获取插入数据的id -->
-   <selectKey keyProperty="uId" keyColumn="u_id" order="AFTER" resultType="java.lang.Integer">
+   <selectKey keyProperty="userId" keyColumn="user_id" order="AFTER" resultType="java.lang.Integer">
        select  last_insert_id()
    </selectKey>
    insert  into user(username,password,email,phone)values (#{userName},#{password},#{email},#{phone})

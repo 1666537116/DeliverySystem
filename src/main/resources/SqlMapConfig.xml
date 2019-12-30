@@ -30,7 +30,8 @@
   <mappers>
    <!--xml配置-->
       <mapper class="com.newer.logreg.mapper.UserMapper"></mapper>
-
+       <mapper class="com.newer.indexloaddata.mapper.MerchantsMapper"></mapper>
+       <mapper class="com.newer.indexloaddata.mapper.MenuMapper"></mapper>
       <mapper resource="LogRegMapper/UserMapper.xml"></mapper>
 
   </mappers>

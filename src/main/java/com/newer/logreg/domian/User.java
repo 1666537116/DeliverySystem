@@ -7,18 +7,18 @@ package com.newer.logreg.domian;
  */
 public class User {
     //占时只有这些字段 后期根据功能在加
-    private  Integer uId; //用户id
+    private  Integer userId; //用户id
     private  String userName;//用户名
     private  String  password;//用户密码
     private  String email;//用户邮箱
     private  String   phone;//手机号码
 
-    public Integer getuId() {
-        return uId;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setuId(Integer uId) {
-        this.uId = uId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -45,16 +45,6 @@ public class User {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "uId=" + uId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 
     public String getPhone() {
         return phone;
@@ -62,5 +52,16 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
