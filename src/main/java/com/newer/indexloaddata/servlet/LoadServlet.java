@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -93,6 +94,10 @@ public class LoadServlet extends HttpServlet {
           pw.print(gson.toJson(page));
 
           pw.close();
+      }else if ("destroy".equals(method)){
+          HttpSession session = request.getSession();
+  session.invalidate();
+
       }
         System.out.println("结束分页："+df.format(new Date()));// new Date()为获取当前系统时间
 

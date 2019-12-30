@@ -1,7 +1,11 @@
 package com.newer.logreg.servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.newer.logreg.domian.Login;
 import com.newer.logreg.domian.User;
 import com.newer.logreg.servcie.LogRegServcie;
+import sun.rmi.runtime.Log;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +43,7 @@ public class LogRegServlet extends HttpServlet {
          String msg = null;
             HttpSession session = req.getSession();
             String code =(String)session.getAttribute("code");
-
+            Login login = new Login();
             //校验验证码
             if(!code.equals(yzm)){
                 msg="验证码错误!";
@@ -55,6 +59,7 @@ public class LogRegServlet extends HttpServlet {
                     msg = "1";
                     System.out.println("登录成功");
                     session.setAttribute("user", user);
+                    login.setUser(user);
                 } else if (user == null) {
                     msg = "用户名或密码错误!";
                     System.out.println("用户名或密码错误!");
@@ -62,8 +67,10 @@ public class LogRegServlet extends HttpServlet {
                 }
 
             }
-   pw.print(msg);
-
+            login.setMsg(msg);
+            Gson gson = new GsonBuilder().create();
+   pw.print(gson.toJson(login));
+pw.close();
 
 
 

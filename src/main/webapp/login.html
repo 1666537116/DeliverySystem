@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8" />
 <title>DeathGhost-登录</title>
-<meta name="keywords" content="DeathGhost,DeathGhost.cn,web前端设,移动WebApp开发" />
-<meta name="description" content="DeathGhost.cn::H5 WEB前端设计开发!" />
 <meta name="author" content="DeathGhost"/>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/public.js"></script>
@@ -19,8 +17,8 @@ Author URI: http://www.deathghost.cn
 <header>
  <section class="Topmenubg">
   <div class="Topnav">
-   <div class="LeftNav">
-    <a href="register.html">注册</a>/<a href="login.html">登录</a><a href="#">QQ客服</a><a href="#">微信客服</a><a href="#">手机客户端</a>
+   <div class="LeftNav" id="LeftNav">
+
    </div>
    <div class="RightNav">
     <a href="user_center.html">用户中心</a> <a href="user_orderlist.html" target="_blank" title="我的订单">我的订单</a> <a href="cart.html">购物车（0）</a> <a href="user_favorites.html" target="_blank" title="我的收藏">我的收藏</a> <a href="#">商家入驻</a>
@@ -145,6 +143,7 @@ Author URI: http://www.deathghost.cn
 <div class="copyright">© 版权所有 2016 DeathGhost 技术支持：<a href="http://www.deathghost.cn" title="DeathGhost">DeathGhost</a></div>
 </footer>
 <script src="js/jquery-3.3.1.js"></script>
+<script src="js/islogin.js"></script>
 <!--提示弹窗插件-->
 <script src="js/layer/2.4/layer.js"></script>
 <!--表单验证插件-->
@@ -175,16 +174,18 @@ Author URI: http://www.deathghost.cn
    let  data = $("#login-from").serialize();
    $.ajax({
     url:'LogRegServlet',
-
+     dataType:'json',
     data:data,
-    success:function (msg) {
-    if(msg!=null){
-      if(msg=="1"){
-       layer.msg(msg,{icon:1,time:1000});
+    success:function (login) {
+    if(login!=null){
+      if(login.msg=="1"){
+       layer.msg(login.msg,{icon:1,time:1000});
+       sessionStorage.setItem("uname",login.user.userName);
+       sessionStorage.setItem("uid",login.user.userId);
        location.href="index.html";
 
       }else{
-       layer.msg(msg,{icon:5,time:1000});
+       layer.msg(login.msg,{icon:5,time:1000});
       }
 
 
