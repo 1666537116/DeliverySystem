@@ -19,4 +19,6 @@ public interface UserMapper {
 
     //添加一个用户(注册功能)
     Integer addUser(User user);
+
+
 }

@@ -1,6 +1,7 @@
 package com.newer.indexloaddata.domian;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author 梁虔硕版权所有 哈哈哈哈
@@ -16,6 +17,15 @@ public class Merchants implements Serializable {
     private  String  merchantsPhone;
     private  String  businessTime;
     private  String icon;
+    private List<Menu> list ;
+
+    public List<Menu> getList() {
+        return list;
+    }
+
+    public void setList(List<Menu> list) {
+        this.list = list;
+    }
 
     public Integer getMid() {
         return mid;

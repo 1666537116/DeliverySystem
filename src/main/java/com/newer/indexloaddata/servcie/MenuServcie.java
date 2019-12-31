@@ -48,12 +48,16 @@ public class MenuServcie {
 
       return menuMapper.findAll();
   }
-
-    //public static void main(String[] args) {
-       // MenuServcie menuServcie = new MenuServcie();
-      // List<Menu>  list =menuServcie.pagingFindById(9,1,3);
-       // for (Menu menu : list) {
-         //   System.out.println(menu);
-       // }
-   // }
+  public Integer updataUserId(Integer userId,Integer meId){
+        init();
+        return menuMapper.updataBymeId(userId,meId);
+  }
+    public static void main(String[] args) {
+        MenuServcie menuServcie = new MenuServcie();
+        System.out.println(menuServcie.updataUserId(4,9));
+       /*List<Menu>  list =menuServcie.pagingFindById(9,1,3);
+        for (Menu menu : list) {
+            System.out.println(menu);
+        }*/
+    }
 }

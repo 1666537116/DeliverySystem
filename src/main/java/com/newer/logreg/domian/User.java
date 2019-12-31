@@ -1,5 +1,9 @@
 package com.newer.logreg.domian;
 
+import com.newer.indexloaddata.domian.Menu;
+
+import java.util.List;
+
 /**
  * @author 梁虔硕版权所有 哈哈哈哈
  * @date 2019/12/25 - 13:02
@@ -12,6 +16,15 @@ public class User {
     private  String  password;//用户密码
     private  String email;//用户邮箱
     private  String   phone;//手机号码
+    private List<Menu> menuList;
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -62,6 +75,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
+                ", menuList=" + menuList +
                 '}';
     }
 }

@@ -14,6 +14,24 @@ public class Menu implements Serializable {
     private  Integer comment;
     private  Integer merchantsId;
     private String pictureurl;
+    private  Merchants merchants;
+    private  Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Merchants getMerchants() {
+        return merchants;
+    }
+
+    public void setMerchants(Merchants merchants) {
+        this.merchants = merchants;
+    }
 
     public Integer getMeId() {
         return meId;
@@ -81,6 +99,7 @@ public class Menu implements Serializable {
                 ", comment=" + comment +
                 ", merchantsId=" + merchantsId +
                 ", pictureurl='" + pictureurl + '\'' +
+                ", merchants=" + merchants +
                 '}';
     }
 }
