@@ -1,0 +1,31 @@
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newer.indexloaddata.mapper.MenuMapper">
+    <resultMap id="menu" type="com.newer.indexloaddata.domian.Menu">
+        <id column="me_id" property="meId" javaType="java.lang.Integer"></id>
+        <result property="menuName" column="menu_name"></result>
+        <result property="menuPrice" column="menu_price"></result>
+        <result property="menuNum" column="menu_num"></result>
+        <result property="comment" column="comment"></result>
+        <result property="pictureurl" column="pictureurl"></result>
+        <result property="userId" column="user_id"></result>
+
+        <association property="merchants"  javaType="com.newer.indexloaddata.domian.Merchants">
+            <id property="mid" column="mid"></id>
+            <result property="merchantsName" column="merchants_name"></result>
+        </association>
+
+
+
+    </resultMap>
+     
+
+    <select id="findBymerIdAndMenuId" resultMap="menu" >
+  select me.* , ms.* from  menu me   LEFT JOIN
+ merchants ms on
+ me.mid = ms.mid  where  me.user_id=#{userId} and
+ ms.mid=#{merchantsId}
+    </select>
+</mapper>

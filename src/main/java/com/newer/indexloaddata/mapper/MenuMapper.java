@@ -1,9 +1,11 @@
 package com.newer.indexloaddata.mapper;
 
 import com.newer.indexloaddata.domian.Menu;
+import com.newer.indexloaddata.domian.Merchants;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 梁虔硕版权所有 哈哈哈哈
@@ -14,10 +16,11 @@ public interface MenuMapper {
     @Select("select * from menu where merchants_id =#{merchantsId}")
     List<Menu> findById(Integer merchantsId);
     //根据商家id分页查询所有菜
-    @Select("select * from menu where merchants_id =#{merchantsId} limit #{currentPage}, #{pageSize}")
+    @Select("select * from menu where mid =#{merchantsId} limit #{currentPage}, #{pageSize}")
     List<Menu> pagingFindById(@Param("merchantsId")Integer merchantsId , @Param("currentPage") Integer currentPage, @Param("pageSize") Integer pageSize);
 
-    //根据菜的id查询菜信息和商家信息
+    //根据菜的id查询菜信息和商家信息 此方法有问题作废
+
     @Results(value = {
             @Result(property = "meId" ,column = "me_id",id = true),
             @Result(property = "menuName" ,column = "menu_name"),
@@ -47,5 +50,6 @@ public interface MenuMapper {
    //根据菜的id设置userid
     @Update("update  menu set user_id=#{userId} where me_id=#{meId}")
     Integer updataBymeId(@Param("userId") Integer userId,@Param("meId") Integer meId);
-
+    //查询单个菜的信息 根据商家id和 菜的id userid
+    List<Menu> findBymerIdAndMenuId(Map<String ,Integer> map);
 }

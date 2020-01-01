@@ -96,7 +96,7 @@ public class LoadServlet extends HttpServlet {
           pw.close();
       }else if ("destroy".equals(method)){
           HttpSession session = request.getSession();
-  session.invalidate();
+  session.removeAttribute("user");
 
       }
         System.out.println("结束分页："+df.format(new Date()));// new Date()为获取当前系统时间

@@ -3,6 +3,7 @@ package com.newer.indexloaddata.servlet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.newer.indexloaddata.domian.Menu;
+import com.newer.indexloaddata.domian.Merchants;
 import com.newer.indexloaddata.servcie.MenuServcie;
 import com.newer.logreg.domian.User;
 
@@ -44,14 +45,19 @@ public class DetaServlet extends HttpServlet {
             Integer userId= user.getUserId();
              Integer meid = Integer.valueOf(request.getParameter("meId"));
             menuServcie.updataUserId(userId,meid);
+
         }else if("loadmenus".equals(method)){
             PrintWriter pw = response.getWriter();
             Gson gson = new GsonBuilder().create();
-            Integer meid =Integer.valueOf(request.getParameter("meid")) ;
+            Integer merchantsId =Integer.valueOf(request.getParameter("merchantsId")) ;
+           HttpSession session = request.getSession();
+           User user = (User) session.getAttribute("user");
+            Integer userId = user.getUserId();
             MenuServcie menuServcie = new MenuServcie();
-            Menu menu = menuServcie.findByid(meid);
-            pw.print(gson.toJson(meid));
-pw.close();
+            List<Menu> list = menuServcie.findBymeIdAndmerchId(merchantsId,userId);
+
+            pw.print(gson.toJson(list));
+               pw.close();
 
         }
 
