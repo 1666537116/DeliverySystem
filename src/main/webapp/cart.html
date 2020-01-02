@@ -175,22 +175,17 @@
 <script src="js/islogin.js"></script>
 <script type="text/javascript">
     $(function () {
-        let merchantsIds = sessionStorage.getItem("merchantsIds").split(',')
-        $.each(merchantsIds,function(index,value){
 
-               //alert(value)
-               loadmenus(value)
 
-        });
-
+        loadmenus()
     })
 
-    function loadmenus(merchantsId) {
+    function loadmenus() {
 
         $.ajax({
             url:'DetaServlet',
             dataType:'json',
-            data:{method:'loadmenus',merchantsId:merchantsId},
+            data:{method:'loadmenus'},
             success:function (data) {
                 let  menus=``;
                 if(data!=null) {
@@ -219,7 +214,7 @@
              </td>
 
              <td>
-             <p>  <button type="button" class="btn btn-danger">删除</button></p>
+             <p>  <button type="button" class="btn btn-danger" onclick="del(this,${menu.meId})">删除</button></p>
              </td>
 
 
@@ -237,7 +232,33 @@
     }
 
 
+function del(obj,menuId) {
+    console.log("aaaaaa1")
+    layer.confirm('确认要删除吗？',function(){
 
+
+        $.ajax({
+            type: 'POST',
+            url: 'DetaServlet',
+            data:{method:'del',menuId:menuId },
+            //dataType: 'json',
+            success: function(count){
+                console.log("aaaaaa0")
+                if(count=="1"){
+                    console.log("aaaaaa1")
+                    $(obj).parents("tr").remove();
+                    console.log("aaaaaa2")
+                    layer.msg('已删除!',{icon:1,time:1000});
+                    console.log("aaaaaa3")
+                }
+
+            },
+            error:function(data) {
+                console.log(data.msg);
+            },
+        });
+    });
+}
 
 </script>
 </body>

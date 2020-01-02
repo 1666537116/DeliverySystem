@@ -52,4 +52,9 @@ public interface MenuMapper {
     Integer updataBymeId(@Param("userId") Integer userId,@Param("meId") Integer meId);
     //查询单个菜的信息 根据商家id和 菜的id userid
     List<Menu> findBymerIdAndMenuId(Map<String ,Integer> map);
+
+    //根据菜的id修改userid
+    @Update("update menu set user_id=-1 where me_id=#{meId}")
+    Integer updataUserId(Integer meId);
+
 }

@@ -40,6 +40,8 @@ public class MerchantsServcie {
         return  list;
     }
 
+
+
     //根据商家id查询商家信息
    public    Merchants findByid(Integer merchantsId){
         init();

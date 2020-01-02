@@ -49,11 +49,11 @@ public class MenuServcie {
         return menu;
     }
    //根据userdeid 商家id查询菜的集合信息
-    public  List<Menu>  findBymeIdAndmerchId(Integer merchantsId,Integer userId){
+    public  List<Menu>  findBymeIdAndmerchId(Integer userId){
         init();
 
        Map<String,Integer> map = new HashMap<String, Integer>();
-        map.put("merchantsId",merchantsId);
+       // map.put("merchantsId",merchantsId);
         map.put("userId",userId);
         return menuMapper.findBymerIdAndMenuId(map) ;
 
@@ -71,5 +71,12 @@ public class MenuServcie {
         init();
         return menuMapper.updataBymeId(userId,meId);
   }
+    //根据菜的id修改userid(购物车删除功能)
+
+    public Integer  updataUserId( Integer menuId){
+        init();
+        return  menuMapper.updataUserId(menuId);
+    }
+
 
 }

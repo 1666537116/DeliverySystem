@@ -49,16 +49,23 @@ public class DetaServlet extends HttpServlet {
         }else if("loadmenus".equals(method)){
             PrintWriter pw = response.getWriter();
             Gson gson = new GsonBuilder().create();
-            Integer merchantsId =Integer.valueOf(request.getParameter("merchantsId")) ;
+            //Integer merchantsId =Integer.valueOf(request.getParameter("merchantsId")) ;
            HttpSession session = request.getSession();
            User user = (User) session.getAttribute("user");
             Integer userId = user.getUserId();
             MenuServcie menuServcie = new MenuServcie();
-            List<Menu> list = menuServcie.findBymeIdAndmerchId(merchantsId,userId);
+            List<Menu> list = menuServcie.findBymeIdAndmerchId(userId);
 
             pw.print(gson.toJson(list));
                pw.close();
 
+        }else  if("del".equals(method)){
+            Integer menuId =Integer.valueOf(request.getParameter("menuId")) ;
+            MenuServcie menuServcie = new MenuServcie();
+          Integer count =  menuServcie.updataUserId(menuId);
+   PrintWriter printWriter = response.getWriter();
+   printWriter.print(count);
+   printWriter.close();
         }
 
 
