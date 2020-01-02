@@ -312,9 +312,9 @@
    success:function (page) {
       if(page!=null){
      //  layer.msg('开始加载数据!',{icon:1,time:1000});
-       let  data = ``;
+       let  merchantsdata = ``;
    page.data.forEach(merchants=>{
-        data=`
+    merchantsdata+=`
 
 
      <a  onclick="to(${merchants.mid})" target="_blank" title="${merchants.merchantsName}">
@@ -340,7 +340,7 @@
 
         `;
    })
-       $("#data").append(data);
+       $("#data").append(merchantsdata);
       }
    }//
   })

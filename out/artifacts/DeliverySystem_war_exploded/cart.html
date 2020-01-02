@@ -104,7 +104,12 @@
                 <td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;">
         <label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label>
         </span></td>
-                <td class="tb3_td4"><span id="jz1">结算</span><a href="confirm_order.html" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+                <td class="tb3_td4">
+<!--
+                    <span id="jz1">结算</span><a href="confirm_order.html" style=" display:none;"  class="jz2" id="jz2">结算</a>
+-->
+               <a href="confirm_order.html"><button class="btn btn-primary" type="button" value="">结算</button></a>
+                </td>
             </tr>
         </table>
     </div>
@@ -170,11 +175,17 @@
 <script src="js/islogin.js"></script>
 <script type="text/javascript">
     $(function () {
-        loadmenus()
+        let merchantsIds = sessionStorage.getItem("merchantsIds").split(',')
+        $.each(merchantsIds,function(index,value){
+
+               //alert(value)
+               loadmenus(value)
+
+        });
+
     })
 
-    function loadmenus() {
-        let merchantsId= sessionStorage.getItem("merchantsId");
+    function loadmenus(merchantsId) {
 
         $.ajax({
             url:'DetaServlet',
@@ -208,11 +219,10 @@
              </td>
 
              <td>
-             <p>删除</p>
+             <p>  <button type="button" class="btn btn-danger">删除</button></p>
              </td>
-             <td>
-             <button type="button" class="badge-light"></button>
-</td>
+
+
 
 </tr>
 

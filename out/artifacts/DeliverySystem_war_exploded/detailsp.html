@@ -303,6 +303,16 @@ Author URI: http://www.deathghost.cn
          })
     }
     function shop(meId) {
+     let  merchantsIds =  sessionStorage.getItem("merchantsIds")
+        let merchantsId = sessionStorage.getItem("merchantsId");
+        if(merchantsIds==null){
+
+            sessionStorage.setItem("merchantsIds",merchantsId)
+        }else{
+            let  merchantsIds =  sessionStorage.getItem("merchantsIds")
+            sessionStorage.setItem("merchantsIds",merchantsIds+","+merchantsId);
+        }
+
       //  alert(meId)
         $.ajax({
             url:'DetaServlet',

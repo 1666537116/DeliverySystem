@@ -17,7 +17,7 @@ function destroy() {
        url:'LoadServlet',
         data:{method:'destroy'},
         success:function () {
-            sessionStorage.  ("uname");
+            sessionStorage.removeItem("uname");
    layer.msg("退出登录成功",{icon:1,time:1000})
    let login = `<a href="register.html">注册</a>/<a href="login.html">登录</a><a href="#">QQ客服</a><a href="#">微信客服</a><a href="#">手机客户端</a>`;
    $("#LeftNav").empty();
