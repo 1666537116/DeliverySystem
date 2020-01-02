@@ -34,6 +34,9 @@
        <mapper class="com.newer.indexloaddata.mapper.MenuMapper"></mapper>
       <mapper resource="LogRegMapper/UserMapper.xml"></mapper>
       <mapper resource="indexloaddataMapper/MenuMepper.xml"></mapper>
+      <mapper resource="indexloaddataMapper/UserAddressMapper.xml"></mapper>
+
+
 
   </mappers>
 

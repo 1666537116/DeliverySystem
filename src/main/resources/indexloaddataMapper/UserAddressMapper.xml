@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.indexloaddata.mapper.UserAddressMapper">
+    <resultMap id="address1" type="com.newer.indexloaddata.domian.UserAddress">
+        <id property="uaId" column="ua_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="area" column="area"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="userId" column="user_id"/>
+        <result property="isDefault" column="isDefault"/>
+
+
+    </resultMap>
+    <select id="findAll" resultMap="address1" parameterType="java.lang.Integer">
+        select * from  user_address where user_id = #{user_id}
+    </select>
+
+    <insert id="addAddress" parameterType="com.newer.indexloaddata.domian.UserAddress">
+        insert into user_address value(#{uaId},#{userName},#{province},#{city},#{area},#{address},#{phone},#{userId},#{isDefault})
+    </insert>
+
+
+
+</mapper>

@@ -52,6 +52,7 @@ public class DetaServlet extends HttpServlet {
             //Integer merchantsId =Integer.valueOf(request.getParameter("merchantsId")) ;
            HttpSession session = request.getSession();
            User user = (User) session.getAttribute("user");
+
             Integer userId = user.getUserId();
             MenuServcie menuServcie = new MenuServcie();
             List<Menu> list = menuServcie.findBymeIdAndmerchId(userId);
